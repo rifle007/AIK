@@ -60,7 +60,7 @@ fi;
 echo "Setting up work folders...\n";
 mkdir $a/split_img $a/ramdisk;
 
-echo 'Splitting image to "$a/split_img/"...';
+echo 'Splitting image to "/split_img/"...';
 bin/unpackbootimg -i "$img" -o $a/split_img;
 if [ $? != "0" ]; then
   cleanup;
@@ -88,7 +88,7 @@ fi;
 mv "$file-ramdisk.gz" "$file-ramdisk.cpio$compext";
 cd $aik;
 
-echo '\nUnpacking ramdisk to "$a/ramdisk/"...\n';
+echo '\nUnpacking ramdisk to "/ramdisk/"...\n';
 cd $a/ramdisk;
 echo "Compression used: $ramdiskcomp";
 if [ ! "$compext" ]; then
