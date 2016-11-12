@@ -1,0 +1,45 @@
+#!/system/bin/sh
+# AIK-mobile/aik: command-line shortcut to the work dir
+# osm0sis @ xda-developers
+e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";
+
+aik=/data/local/AIK-mobile;
+
+mount -o remount,rw /system;
+
+case $1 in
+  --restore)
+    # fix shortcut symlink
+    if [ -e /su ]; then
+      su -c "ln -s $aik/bin/aik /su/bin/aik";
+    else
+      su -c "mount -o rw,remount -t auto /system; \
+             rm -f /system/xbin/aik; \
+             ln -s $aik/bin/aik /system/xbin/aik; \
+             mount -o ro,remount -t auto /system";
+    fi;
+    echo "aik: symlink restored!";
+  ;;
+  *)
+    # go local and request root
+    echo ""
+    echo $cy"                 ******************              "
+    echo $r"                 === AIK-mobile ===              "
+    echo $g"==================================================="
+    echo "= USAGE :                                         ="
+    echo "= UNPACK => unpack <file.img> <enter>             ="
+    echo "= REPACK => repack <enter>                        ="
+    echo "= ++++/+++++/++++++/+++++/+++++++/++++++/+++++/++ ="
+    echo "= +YOUR WORK FOLDER IN /data/local/AIK-mobile/+++ ="
+    echo "=                                                 ="
+    echo "============== modified by Rivv ==================="
+    echo ""
+    echo ""
+    cd $aik;
+    echo $y" >> List available image << "
+    ls $aik | grep img
+    echo ""
+    PATH="$PATH:$aik" su;
+  ;;
+esac;
+

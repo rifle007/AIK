@@ -1,0 +1,154 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: L25uVWAQuy4bQtvqpXReIy0mCrs=
+Created-By: 1.0 (Android SignApk)
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: Br6xNsbYLFIighT+FGsY/cB14YM=
+
+Name: bin/mips/mkbootfs
+SHA1-Digest: he92//vWbSfmsjrt/S1tE5TE4v4=
+
+Name: bin/mips/unpackbootimg
+SHA1-Digest: aEt7Pn4V8b0el16xbruUWsdp+Ug=
+
+Name: data/local/AIK-mobile/cleanup.sh
+SHA1-Digest: m+yft/4/E8szSFhnN+QXmN7x+0c=
+
+Name: bin/mips/xz
+SHA1-Digest: 0Mm4a4AHBsmqyikMfmkYdH2KS/w=
+
+Name: bin/x86_64/mkbootfs
+SHA1-Digest: VRHgq86FtYPXE66tqcZK3obw8l0=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: X6+Aa+PfZZePUU4umWac9k1qzoQ=
+
+Name: bin/x86/mkbootimg
+SHA1-Digest: inVmxTpuYPN9lHyVZMzoKVDSUg4=
+
+Name: bin/mips64/lz4
+SHA1-Digest: mazvlZaqzRNew6Zzuytc0ZtNccw=
+
+Name: bin/mips64/file
+SHA1-Digest: iiZ9qmz0WyLrJf5JJ9Y+toMBVU8=
+
+Name: bin/arm/xz
+SHA1-Digest: yM8XQ+jAaBdwQCvdv+45uhCtbB0=
+
+Name: bin/arm/mkbootimg
+SHA1-Digest: ijeSGlQfTLcbDqvNb3sHHMtpnKk=
+
+Name: bin/mips64/mkbootfs
+SHA1-Digest: 8TACgRUFDTfImHbb4X/LIj5pltk=
+
+Name: bin/x86/lz4
+SHA1-Digest: f5iclIg80g6Yug8Ag68R1QUCtKY=
+
+Name: bin/mips64/unpackbootimg
+SHA1-Digest: 9tBXRg94K4PRrcOlNR4PNYp4isM=
+
+Name: bin/x86_64/unpackbootimg
+SHA1-Digest: +WYsgNYI+9aDG5pktkmXybENHjQ=
+
+Name: bin/mips/lz4
+SHA1-Digest: OzkTcYXrg4Vt56osF2scTWy7MsI=
+
+Name: bin/arm64/busybox
+SHA1-Digest: mbccVxYD17w9Qzd0jmW6yKRUaOs=
+
+Name: bin/x86_64/xz
+SHA1-Digest: U0HoYAemrJg45CcDyVnf7Ba/n50=
+
+Name: bin/x86/unpackbootimg
+SHA1-Digest: TEKuFvYNJ315M17tSy3FyThAB0w=
+
+Name: bin/x86/file
+SHA1-Digest: S9u8KT0nLYBvNkm9yorIQPTQ1Aw=
+
+Name: data/local/AIK-mobile/authors.txt
+SHA1-Digest: 5kMbUwgxREH5lQ8/eJ95UIkTn2k=
+
+Name: bin/arm64/xz
+SHA1-Digest: 7mrhE/2wDkhXleaeEPPGCfBN40c=
+
+Name: bin/x86_64/busybox
+SHA1-Digest: 0C7pI2nP5TSqPXEkXfjwYxIZvZA=
+
+Name: data/local/AIK-mobile/bin/magic
+SHA1-Digest: Nwr1+V7FN7aXbLiMIuS3+XP0UN4=
+
+Name: bin/x86/busybox
+SHA1-Digest: bk0fWkY+vjB3TIgEfAiWe5EFqMo=
+
+Name: bin/arm/unpackbootimg
+SHA1-Digest: BQAhhKHSerMc5etb/3khSC2tcgA=
+
+Name: bin/x86_64/mkbootimg
+SHA1-Digest: 9dNcN9T+Q53GEtO+KC2OU1dI4ys=
+
+Name: bin/arm64/unpackbootimg
+SHA1-Digest: sphp6C/ypqMNw+WRQxwvcXhXhW8=
+
+Name: bin/arm/file
+SHA1-Digest: dkECgj50HImiliqzfB6ew20a6q4=
+
+Name: bin/mips64/xz
+SHA1-Digest: nG4beiBHGEV4ddzCQuIsjysm3dQ=
+
+Name: bin/x86_64/lz4
+SHA1-Digest: d+bXB1D/JNKusVCbc/WnTnjbbG8=
+
+Name: bin/mips/busybox
+SHA1-Digest: +Pz66450j56T+eoNNxMvnsaLRbU=
+
+Name: bin/arm64/mkbootfs
+SHA1-Digest: K+sB7PxN3MYShsYUPdh0hCcZDQU=
+
+Name: bin/mips/file
+SHA1-Digest: fRTfdCs0mNZbCreD4+Mg4DR0keA=
+
+Name: bin/mips64/busybox
+SHA1-Digest: Eq0jt97NNj7jDSP+cqqyu99VqBE=
+
+Name: bin/x86_64/file
+SHA1-Digest: WHSOHlt0UPv03t9DjkKo3I7MbUc=
+
+Name: bin/arm/mkbootfs
+SHA1-Digest: 2U/Rwm8dYFz5b+wsdjGdJn764PM=
+
+Name: bin/x86/xz
+SHA1-Digest: ffGXO2zwmFl6wMM/K0JqSvZNj60=
+
+Name: bin/arm/lz4
+SHA1-Digest: b3hyjTs2/fHgCK/qCcfzlEvrQnc=
+
+Name: bin/arm64/file
+SHA1-Digest: dZPnTz+21WR+3+l4hpFsOWUSx8Y=
+
+Name: bin/x86/mkbootfs
+SHA1-Digest: TEH5HMPdLWpsObqymh88C7abVWw=
+
+Name: bin/arm64/lz4
+SHA1-Digest: QVYXnyIxVdpcI7/pnPO/rUwaj00=
+
+Name: data/local/AIK-mobile/repackimg.sh
+SHA1-Digest: td3jwYQ0BOR6F/J+pZzGsTuYjzU=
+
+Name: bin/mips64/mkbootimg
+SHA1-Digest: hXdO2MbFZH+etlQLiKYCRayZibM=
+
+Name: bin/arm64/mkbootimg
+SHA1-Digest: NC14Ex+YLy29NQaoplJ/CNwXvyY=
+
+Name: bin/arm/busybox
+SHA1-Digest: hKTrZF+c/0J1gJ4q/fH73k/A1+M=
+
+Name: bin/mips/mkbootimg
+SHA1-Digest: jlDaKFWsRJaOTZYpb+RDtAxzRro=
+
+Name: data/local/AIK-mobile/bin/aik
+SHA1-Digest: RuQwIft0O5dhUrvRFtED3GqZHQ4=
+
+Name: data/local/AIK-mobile/unpackimg.sh
+SHA1-Digest: w89MDK38ZgJ6geEaroYHzZDaLLE=
+

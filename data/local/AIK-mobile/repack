@@ -1,0 +1,118 @@
+#!/system/bin/sh
+# AIK-mobile/repackimg: repack ramdisk and build image
+# osm0sis @ xda-developers
+echo ""
+echo "===== Repack Image ======"
+echo ""
+echo ">>> List available folder !! <<<"
+ls -d */
+echo ""
+echo " Masukan Nama Folder (ketik nama folder)..."
+read a
+if [ -d $a ]; then
+echo ""
+else
+echo " not found !!! "
+exit
+fi;
+
+case $0 in
+  *.sh) aik="$0";;
+     *) aik="$(lsof -p $$ 2>/dev/null | grep -o '/.*repack$')";;
+esac;
+aik="$(dirname "$(readlink -f "$aik")")";
+
+abort() { cd "$aik"; echo "Error!"; }
+
+cd "$aik";
+bb=bin/busybox;
+chmod -R 755 bin *.sh;
+chmod 644 bin/magic;
+
+if [ ! -f $bb ]; then
+  bb=busybox;
+fi;
+
+if [ -z "$(ls $a/split_img/* 2> /dev/null)" -o -z "$(ls $a/ramdisk/* 2> /dev/null)" ]; then
+  echo "No files found to be packed/built.";
+  abort;
+  return 1;
+fi;
+
+case $0 in *) clear;; esac;
+echo "\nAndroid Image Kitchen - RepackImg Script";
+echo "by osm0sis @ xda-developers\n";
+
+if [ ! -z "$(ls *-new.* 2> /dev/null)" ]; then
+  echo "Warning: Overwriting existing files!\n";
+fi;
+
+rm -f $a/ramdisk-new.cpio*;
+case $1 in
+  --original)
+    echo "Repacking with original ramdisk...";;
+  --level|*)
+    echo "Packing ramdisk...\n";
+    ramdiskcomp=`cat $a/split_img/*-ramdiskcomp`;
+    if [ "$1" == "--level" -a "$2" ]; then
+      level="-$2";
+      lvltxt=" - Level: $2";
+    elif [ "$ramdiskcomp" == "xz" ]; then
+      level=-1;
+    fi;
+    echo "Using compression: $ramdiskcomp$lvltxt";
+    repackcmd="$bb $ramdiskcomp $level";
+    compext=$ramdiskcomp;
+    case $ramdiskcomp in
+      gzip) compext=gz;;
+      lzop) compext=lzo;;
+      xz) repackcmd="bin/xz $level -Ccrc32";;
+      lzma) repackcmd="bin/xz $level -Flzma";;
+      bzip2) compext=bz2;;
+      lz4) repackcmd="bin/lz4 $level -l stdin stdout";;
+    esac;
+    bin/mkbootfs $a/ramdisk | $repackcmd > $a/ramdisk-new.cpio.$compext;
+    if [ $? != "0" ]; then
+      abort;
+      return 1;
+    fi;;
+esac;
+
+echo "\nGetting build information...";
+cd $a/split_img;
+kernel=`ls *-zImage`;               echo "kernel = $kernel";
+if [ "$1" == "--original" ]; then
+  ramdisk=`ls *-ramdisk.cpio*`;     echo "ramdisk = $ramdisk";
+  ramdisk="split_img/$ramdisk";
+else
+  ramdisk="ramdisk-new.cpio.$compext";
+fi;
+cmdline=`cat *-cmdline`;            echo "cmdline = $cmdline";
+board=`cat *-board`;                echo "board = $board";
+base=`cat *-base`;                  echo "base = $base";
+pagesize=`cat *-pagesize`;          echo "pagesize = $pagesize";
+kerneloff=`cat *-kerneloff`;        echo "kernel_offset = $kerneloff";
+ramdiskoff=`cat *-ramdiskoff`;      echo "ramdisk_offset = $ramdiskoff";
+tagsoff=`cat *-tagsoff`;            echo "tags_offset = $tagsoff";
+if [ -f *-second ]; then
+  second=`ls *-second`;             echo "second = $second";  
+  second="--second split_img/$second";
+  secondoff=`cat *-secondoff`;      echo "second_offset = $secondoff";
+  secondoff="--second_offset $secondoff";
+fi;
+if [ -f *-dtb ]; then
+  dtb=`ls *-dtb`;                   echo "dtb = $dtb";
+  dtb="--dt split_img/$dtb";
+fi;
+cd $aik/$a;
+
+echo "\nBuilding image...\n";
+$aik/bin/mkbootimg --kernel "split_img/$kernel" --ramdisk "$ramdisk" $second --cmdline "$cmdline" --board "$board" --base $base --pagesize $pagesize --kernel_offset $kerneloff --ramdisk_offset $ramdiskoff $secondoff --tags_offset $tagsoff $dtb -o image-new.img;
+if [ $? != "0" ]; then
+  abort;
+  return 1;
+fi;
+
+echo "Done!";
+return 0;
+
