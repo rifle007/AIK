@@ -39,6 +39,16 @@ ui_print " ";
 ui_print "Android Image Kitchen - Mobile Edition";
 ui_print "Installer Script";
 ui_print "by osm0sis @ xda-developers";
+ui_print "********************************************"
+ui_print "*                AIK-mobile                *"
+ui_print "*               M.O.D Edition              *"
+ui_print "*                                          *"
+ui_print "*                     v1                   *"
+ui_print "*                                          *"
+ui_print "*                                          *"
+ui_print "*                                          *"
+ui_print "*                                 - Rivv - *"
+ui_print "********************************************"
 show_progress 1.34 0;
 
 ui_print " ";
@@ -104,6 +114,7 @@ else
 fi;
 ui_print "Linking helper script $target/aik ...";
 cp -rpf "/data/local/AIK-mobile/bin/aik" "$target/aik";
+cp -rpf "/data/local/AIK-mobile/bin/backup" "$target/backup";
 set_progress 1.0;
 
 ui_print " ";
