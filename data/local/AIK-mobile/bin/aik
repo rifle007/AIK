@@ -27,6 +27,7 @@ case $1 in
     echo $r"                 === AIK-mobile ===              "
     echo $g"==================================================="
     echo "= USAGE :                                         ="
+    echo "= BACKUP => backup <enter>                        ="
     echo "= UNPACK => unpack <file.img> <enter>             ="
     echo "= REPACK => repack <enter>                        ="
     echo "= ++++/+++++/++++++/+++++/+++++++/++++++/+++++/++ ="
@@ -37,8 +38,9 @@ case $1 in
     echo ""
     cd $aik;
     echo $y" >> List available image << "
+    echo $g""
     ls $aik | grep img
-    echo ""
+    echo $y""
     PATH="$PATH:$aik" su;
   ;;
 esac;

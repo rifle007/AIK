@@ -1,13 +1,50 @@
 #!/system/bin/sh
 # AIK-mobile/repackimg: repack ramdisk and build image
 # osm0sis @ xda-developers
+
+menu() {
+
+e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";
+
+aik=/data/local/AIK-mobile;
+
+mount -o remount,rw /system;
+
+
+    # go local and request root
+    echo ""
+    echo $cy"                 ******************              "
+    echo $r"                 === AIK-mobile ===              "
+    echo $g"==================================================="
+    echo "= USAGE :                                         ="
+    echo "= BACKUP => backup <enter>                        ="
+    echo "= UNPACK => unpack <file.img> <enter>             ="
+    echo "= REPACK => repack <enter>                        ="
+    echo "= ++++/+++++/++++++/+++++/+++++++/++++++/+++++/++ ="
+    echo "= +YOUR WORK FOLDER IN /data/local/AIK-mobile/+++ ="
+    echo "=                                                 ="
+    echo "============== modified by Rivv ==================="
+    echo ""
+    echo ""
+    #cd $aik;
+    echo $y" >> List available image << "
+    echo $g""
+    ls $aik | grep img
+    echo $y""
+    #PATH="$PATH:$aik" su;
+}
+
+
+e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";
 echo ""
-echo "===== Repack Image ======"
+echo $r"===== Repack Image ======"
 echo ""
 echo ">>> List available folder !! <<<"
-ls -d */
+echo $g""
+for i in $(ls -d */ | grep -v "bin/"); do echo ${i%%/}; done
+#ls -d */ | grep -v "bin/"
 echo ""
-echo " Masukan Nama Folder (ketik nama folder)..."
+echo $y" Masukan Nama Folder (ketik nama folder)..."
 read a
 if [ -d $a ]; then
 echo ""
@@ -114,5 +151,5 @@ if [ $? != "0" ]; then
 fi;
 
 echo "Done!";
+menu
 return 0;
-

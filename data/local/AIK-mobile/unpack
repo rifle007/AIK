@@ -1,6 +1,39 @@
 #!/system/bin/sh
 # AIK-mobile/unpackimg: split image and unpack ramdisk
 # osm0sis @ xda-developers
+
+menu() {
+
+e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";
+
+aik=/data/local/AIK-mobile;
+
+mount -o remount,rw /system;
+
+
+    # go local and request root
+    echo ""
+    echo $cy"                 ******************              "
+    echo $r"                 === AIK-mobile ===              "
+    echo $g"==================================================="
+    echo "= USAGE :                                         ="
+    echo "= BACKUP => backup <enter>                        ="
+    echo "= UNPACK => unpack <file.img> <enter>             ="
+    echo "= REPACK => repack <enter>                        ="
+    echo "= ++++/+++++/++++++/+++++/+++++++/++++++/+++++/++ ="
+    echo "= +YOUR WORK FOLDER IN /data/local/AIK-mobile/+++ ="
+    echo "=                                                 ="
+    echo "============== modified by Rivv ==================="
+    echo ""
+    echo ""
+    #cd $aik;
+    echo $y" >> List available image << "
+    echo $g""
+    ls $aik | grep img
+    echo $y""
+    #PATH="$PATH:$aik" su;
+}
+
 echo ""
 echo "====== UNPACK IMAGE ======="
 echo " Buat Folder (ketik nama folder)..."
@@ -60,7 +93,7 @@ fi;
 echo "Setting up work folders...\n";
 mkdir $a/split_img $a/ramdisk;
 
-echo 'Splitting image to "/split_img/"...';
+echo "Splitting image to \"$a/split_img\"...\n";
 bin/unpackbootimg -i "$img" -o $a/split_img;
 if [ $? != "0" ]; then
   cleanup;
@@ -88,7 +121,7 @@ fi;
 mv "$file-ramdisk.gz" "$file-ramdisk.cpio$compext";
 cd $aik;
 
-echo '\nUnpacking ramdisk to "/ramdisk/"...\n';
+echo "\nUnpacking ramdisk to \"$a/ramdisk\"...\n";
 cd $a/ramdisk;
 echo "Compression used: $ramdiskcomp";
 if [ ! "$compext" ]; then
@@ -103,5 +136,5 @@ fi;
 cd $aik;
 
 echo "\nDone!";
+menu
 return 0;
-
